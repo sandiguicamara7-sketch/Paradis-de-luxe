@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maison Djellaba – Djellabas et vêtements traditionnels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1ee;--surface:#fff;--ink:#12302b;--muted:#566c66;--line:#d3dcd8;--accent:#c8891a;--accent-ink:#fff;--deep:#12302b;--deep-ink:#f3f1e8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a18;--surface:#152724d;--ink:#eaf0ed;--muted:#9bb0aa;--line:#26403b;--accent:#e0a233;--accent-ink:#1a1204;--deep:#081211;--deep-ink:#eaf0ed;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1a18;--surface:#152724;--ink:#eaf0ed;--muted:#9bb0aa;--line:#26403b;--accent:#e0a233;--accent-ink:#1a1204;--deep:#081211;--deep-ink:#eaf0ed;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.1;margin:0}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:700;font-size:1.35rem;text-decoration:none}
+nav a{margin-right:20px;text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.cartbtn{border:1.5px solid var(--ink);background:none;color:var(--ink);border-radius:999px;padding:8px 16px;font-weight:600}
+.cartbtn b{background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:1px 8px;margin-left:6px}
+.hero{background:var(--deep);color:var(--deep-ink);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding-top:56px;padding-bottom:0}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem)}
+.hero p{max-width:46ch;opacity:.85;font-size:1.1rem;margin:20px 0 28px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:13px 24px;font-weight:600;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.hero svg{width:100%;max-width:380px;justify-self:center;display:block}
+.zellige{height:18px;background:repeating-linear-gradient(90deg,var(--accent) 0 18px,var(--deep) 18px 22px,#2f7d6f 22px 40px,var(--deep) 40px 44px)}
+section{padding:56px 0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:28px}
+.head h2{font-size:clamp(1.8rem,4vw,2.5rem)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{border:1.5px solid var(--line);background:none;color:var(--ink);padding:8px 16px;border-radius:999px;font-weight:500}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.pic{aspect-ratio:4/5;display:grid;place-items:center}
+.pic svg{width:62%}
+.info{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info h3{font-size:1.15rem}
+.info small{color:var(--muted)}
+.price{font-weight:600;font-size:1.1rem}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:10px}
+.row select{flex:1;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:8px;font:inherit}
+.row button{background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:8px 14px;font-weight:600}
+.about{background:var(--surface);border-block:1px solid var(--line)}
+.about .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+.about h3{font-size:1.2rem;margin-bottom:6px}
+.about p{margin:0;color:var(--muted)}
+footer{padding:36px 0;color:var(--muted);font-size:.95rem}
+#shade{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:40;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+body.open #drawer{transform:none}
+body.open #shade{opacity:1;pointer-events:auto}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h2{font-size:1.4rem}
+.x{background:none;border:0;color:var(--ink);font-size:1.6rem;line-height:1}
+#items{flex:1;overflow:auto;padding:8px 20px}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.it small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:28px;height:28px;border-radius:6px;border:1.5px solid var(--line);background:none;color:var(--ink)}
+.rm{background:none;border:0;color:var(--muted);text-decoration:underline;margin-left:8px;font-size:.9rem}
+.foot{padding:18px 20px;border-top:1px solid var(--line)}
+.tot{display:flex;justify-content:space-between;font-weight:600;font-size:1.15rem;margin-bottom:12px}
+.foot .btn{width:100%;text-align:center}
+.empty{color:var(--muted);padding:28px 0}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr;padding-top:40px}.hero svg{max-width:260px}nav{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="dj" viewBox="0 0 200 260"><path d="M100 8C78 8 62 26 60 48L24 86 10 250h180L176 86 140 48C138 26 122 8 100 8Z" fill="currentColor"/><path d="M100 8C88 20 86 44 100 70c14-26 12-50 0-62Z" fill="rgba(0,0,0,.28)"/><path d="M100 70v90" stroke="rgba(255,255,255,.35)" stroke-width="3"/><circle cx="100" cy="96" r="3.5" fill="rgba(255,255,255,.6)"/><circle cx="100" cy="124" r="3.5" fill="rgba(255,255,255,.6)"/><circle cx="100" cy="152" r="3.5" fill="rgba(255,255,255,.6)"/></symbol>
+</svg>
+
+<header><div class="wrap bar">
+<a class="logo" href="#top">Maison Djellaba</a>
+<nav><a href="#boutique">Boutique</a><a href="#infos">Infos</a></nav>
+<button class="cartbtn" id="open" aria-label="Ouvrir le panier">Panier<b id="count">0</b></button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div>
+<h1>Djellabas et tenues traditionnelles, coupées pour le quotidien.</h1>
+<p>Djellabas, gandouras, kaftans et abayas pour hommes et femmes. Choisissez votre taille, ajoutez au panier, commandez par WhatsApp.</p>
+<a class="btn" href="#boutique">Voir la collection</a>
+</div>
+<svg viewBox="0 0 200 260" style="color:#2f7d6f" role="img" aria-label="Silhouette de djellaba à capuche"><use href="#dj"/></svg>
+</div><div class="zellige"></div></div>
+
+<section id="boutique"><div class="wrap">
+<div class="head"><h2>La collection</h2>
+<div class="tabs" id="tabs"></div></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section class="about" id="infos"><div class="wrap"><div class="cols">
+<div><h3>Commande simple</h3><p>Votre panier est envoyé par WhatsApp. Nous confirmons la disponibilité et le paiement avec vous.</p></div>
+<div><h3>Livraison</h3><p>Expédition en France et en Europe sous 3 à 7 jours ouvrés. Livraison offerte dès 150 €.</p></div>
+<div><h3>Échange de taille</h3><p>Une taille qui ne va pas ? Échange possible sous 14 jours, vêtement non porté.</p></div>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">© Maison Djellaba. Remplacez ce nom, les produits et le numéro WhatsApp par les vôtres.</div></footer>
+
+<div id="shade"></div>
+<aside id="drawer" aria-label="Panier">
+<div class="dh"><h2>Votre panier</h2><button class="x" id="close" aria-label="Fermer le panier">×</button></div>
+<div id="items"></div>
+<div class="foot"><div class="tot"><span>Total</span><span id="total">0 €</span></div>
+<a class="btn" id="order" href="#" target="_blank" rel="noopener">Commander par WhatsApp</a></div>
+</aside>
+
+<script>
+// À MODIFIER : votre numéro WhatsApp au format international, sans + ni espaces
+var WHATSAPP="33600000000";
+var P=[
+{id:1,n:"Djellaba homme classique",c:"Homme",p:89,col:"#1f4d6b",d:"Laine légère, capuche, coupe droite"},
+{id:2,n:"Gandoura homme",c:"Homme",p:69,col:"#e7e1cf",d:"Coton blanc cassé, col rond"},
+{id:3,n:"Jabador homme",c:"Homme",p:79,col:"#6b7a52",d:"Ensemble tunique et pantalon"},
+{id:4,n:"Burnous en laine",c:"Homme",p:149,col:"#3b2f2a",d:"Cape à capuche, laine épaisse"},
+{id:5,n:"Djellaba femme brodée",c:"Femme",p:119,col:"#7a2f4a",d:"Broderies dorées sur le devant"},
+{id:6,n:"Kaftan de soirée",c:"Femme",p:129,col:"#2f7d6f",d:"Tissu fluide, manches larges"},
+{id:7,n:"Abaya unie",c:"Femme",p:99,col:"#1c1c24",d:"Crêpe doux, fermeture cachée"},
+{id:8,n:"Djellaba enfant",c:"Enfant",p:49,col:"#c8891a",d:"Fêtes et cérémonies, 4 à 12 ans"}
+];
+var SZ={Homme:["S","M","L","XL","XXL"],Femme:["36","38","40","42","44","46"],Enfant:["4 ans","6 ans","8 ans","10 ans","12 ans"]};
+var cart=[],cat="Tout";
+try{cart=JSON.parse(localStorage.getItem("cart")||"[]")}catch(e){cart=[]}
+var $=function(i){return document.getElementById(i)};
+var eur=function(n){return n.toLocaleString("fr-FR")+" €"};
+function save(){try{localStorage.setItem("cart",JSON.stringify(cart))}catch(e){}}
+function tabs(){
+ var cs=["Tout","Homme","Femme","Enfant"];
+ $("tabs").innerHTML=cs.map(function(c){return '<button aria-pressed="'+(c===cat)+'" data-c="'+c+'">'+c+'</button>'}).join("");
+ $("tabs").querySelectorAll("button").forEach(function(b){b.onclick=function(){cat=b.dataset.c;tabs();grid()}});
+}
+function grid(){
+ $("grid").innerHTML=P.filter(function(x){return cat==="Tout"||x.c===cat}).map(function(x){
+  return '<article class="card"><div class="pic" style="background:'+x.col+'22"><svg viewBox="0 0 200 260" style="color:'+x.col+'" aria-hidden="true"><use href="#dj"/></svg></div>'+
+  '<div class="info"><small>'+x.c+'</small><h3>'+x.n+'</h3><small>'+x.d+'</small><div class="price">'+eur(x.p)+'</div>'+
+  '<div class="row"><select aria-label="Taille de '+x.n+'" id="s'+x.id+'">'+SZ[x.c].map(function(s){return "<option>"+s+"</option>"}).join("")+'</select>'+
+  '<button data-a="'+x.id+'">Ajouter</button></div></div></article>';
+ }).join("");
+ $("grid").querySelectorAll("button[data-a]").forEach(function(b){b.onclick=function(){add(+b.dataset.a)}});
+}
+function add(id){
+ var s=$("s"+id).value,l=cart.find(function(i){return i.id===id&&i.s===s});
+ if(l)l.q++;else cart.push({id:id,s:s,q:1});
+ draw();document.body.classList.add("open");
+}
+function draw(){
+ save();
+ var n=0,t=0;
+ $("items").innerHTML=cart.length?cart.map(function(i,k){
+  var x=P.find(function(p){return p.id===i.id});n+=i.q;t+=x.p*i.q;
+  return '<div class="it"><div><b>'+x.n+'</b><br><small>Taille '+i.s+'</small><div class="qty"><button data-m="'+k+'" aria-label="Retirer un">−</button>'+i.q+'<button data-p="'+k+'" aria-label="Ajouter un">+</button><button class="rm" data-r="'+k+'">Supprimer</button></div></div><div>'+eur(x.p*i.q)+'</div></div>';
+ }).join(""):'<p class="empty">Votre panier est vide. Choisissez un vêtement dans la collection.</p>';
+ $("count").textContent=n;$("total").textContent=eur(t);
+ var msg="Bonjour, je souhaite commander :%0A"+cart.map(function(i){var x=P.find(function(p){return p.id===i.id});return "- "+i.q+" × "+x.n+" (taille "+i.s+")"}).join("%0A")+"%0ATotal : "+t+" €";
+ $("order").href="https://wa.me/"+WHATSAPP+"?text="+msg;
+ $("order").style.display=cart.length?"block":"none";
+ $("items").querySelectorAll("button").forEach(function(b){b.onclick=function(){
+  var d=b.dataset;
+  if(d.p!==undefined)cart[+d.p].q++;
+  if(d.m!==undefined&&--cart[+d.m].q<1)cart.splice(+d.m,1);
+  if(d.r!==undefined)cart.splice(+d.r,1);
+  draw();
+ }});
+}
+$("open").onclick=function(){document.body.classList.add("open")};
+$("close").onclick=$("shade").onclick=function(){document.body.classList.remove("open")};
+document.onkeydown=function(e){if(e.key==="Escape")document.body.classList.remove("open")};
+tabs();grid();draw();
+</script>
+</body>
+</html>
